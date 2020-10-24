@@ -1,9 +1,11 @@
 const configs = require('../config/index');
+const uuid = require('uuid')
 
 const properties = {
     addProperty: async (req, res) => {
 
         const { body } = req
+        body.uuid = uuid.v4()
 
         try {
 
@@ -18,7 +20,21 @@ const properties = {
                 }) 
             }
 
-            const saveAlgolia = await configs.__algoliaSearch.saveObject(body, {autoGenerateObjectIDIfNotExist: true})
+            const algoliaObj = {
+                title: body.title,
+                price: body.price,
+                uuid: body.uuid,
+                province: body.province,
+                district: body.district,
+                sector: body.sector,
+                village: body.village,
+                coordinates: body.coordinates,
+                property_details: body.property_details,
+                images: body.images[0],
+                property_info: body.property_info,
+            }
+
+            const saveAlgolia = await configs.__algoliaSearch.saveObject(algoliaObj, {autoGenerateObjectIDIfNotExist: true})
             
             return res.status(201).send({
                 status: 201,
@@ -26,7 +42,7 @@ const properties = {
                 savedAlg: saveAlgolia
             })
         } catch(error) {
-            console.log('llllllll---', error)
+            // console.log('llllllll---', error)
             return res.status(500).send({
                 status: 500,
                 message: 'Please try again'

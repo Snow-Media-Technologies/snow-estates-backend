@@ -3,6 +3,7 @@ const cors = require('cors');
 const routes = require('./src/routes/index');
 const env = require('dotenv')
 const bodyParser = require('body-parser');
+const joiErrors = require('./src/middleware/joiErrors');
 
 
 env.config()
@@ -18,6 +19,8 @@ appValue.use(bodyParser.json({limit: '50mb'}));
 appValue.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit:50000}));
 
 appValue.use(routes);
+
+appValue.use(joiErrors.joiErrors());
 
 
 appValue.listen(port, () => {
