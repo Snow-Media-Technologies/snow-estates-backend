@@ -19,7 +19,9 @@ const createProperty = {
         property_details: Validate.Joi.string().required(),
         'Pets Allowed': Validate.Joi.boolean(),
         price: Validate.Joi.array().required(),
-        uuid: Validate.Joi.string().required()
+        uuid: Validate.Joi.string().required(),
+        owner: Validate.Joi.object().required(),
+        blocker: Validate.Joi.object().required()
     }
 }
 
