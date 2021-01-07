@@ -9,7 +9,6 @@ dotenv.config()
 // -----------------------------------------------------------------------------
 // Firebase
 // -----------------------------------------------------------------------------
-console.log('gggggg', process.env.APP_APP_ID)
 const firebaseConfig = {
   apiKey: process.env.APP_API_KEY,
   authDomain: process.env.APP_AUTH_DOMAIN,

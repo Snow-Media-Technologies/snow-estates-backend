@@ -9,7 +9,7 @@ const properties = {
 
         try {
 
-            const getCollection = configs.__firestore.collection('propertiess')
+            const getCollection = configs.__firestore.collection('properties')
 
             const createDoc = await getCollection.add(body)
             
@@ -30,8 +30,10 @@ const properties = {
                 village: body.village,
                 coordinates: body.coordinates,
                 property_details: body.property_details,
-                images: body.images[0],
+                images: body.images,
                 property_info: body.property_info,
+                owner: body.owner,
+                blocker: body.blocker
             }
 
             const saveAlgolia = await configs.__algoliaSearch.saveObject(algoliaObj, {autoGenerateObjectIDIfNotExist: true})
@@ -42,7 +44,6 @@ const properties = {
                 savedAlg: saveAlgolia
             })
         } catch(error) {
-            // console.log('llllllll---', error)
             return res.status(500).send({
                 status: 500,
                 message: 'Please try again'
