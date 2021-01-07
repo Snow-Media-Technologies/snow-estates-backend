@@ -5,7 +5,7 @@ const createProperty = {
         'Size of farm' : Validate.Joi.string().required(),
         'Street Address': Validate.Joi.string().required(),
         address: Validate.Joi.string().required(),
-        property_info: Validate.Joi.array().required(),
+        property_info: Validate.Joi.object().required(),
         Parking: Validate.Joi.boolean().required(),
         images: Validate.Joi.array().required(),
         province: Validate.Joi.string(),
@@ -18,7 +18,7 @@ const createProperty = {
         title: Validate.Joi.string().required(),
         property_details: Validate.Joi.string().required(),
         'Pets Allowed': Validate.Joi.boolean(),
-        price: Validate.Joi.array().required(),
+        price: Validate.Joi.object().required(),
         uuid: Validate.Joi.string().required(),
         owner: Validate.Joi.object().required(),
         blocker: Validate.Joi.object().required()

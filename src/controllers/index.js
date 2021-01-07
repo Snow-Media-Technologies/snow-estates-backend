@@ -9,6 +9,7 @@ const properties = {
 
         try {
 
+            console.log('hahahahhah', body)
             const getCollection = configs.__firestore.collection('properties')
 
             const createDoc = await getCollection.add(body)
